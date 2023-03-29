@@ -43,7 +43,6 @@ public class UserService implements IUserService {
 	@Override
 	public void deleteUser(long id) {
 		userDao.deleteById(id);
-		;
 	}
 
 }

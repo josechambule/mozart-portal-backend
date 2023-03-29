@@ -33,7 +33,8 @@ public class AbstractHibernateDao<T extends Serializable> {
     }
 
     public T update(final T entity) {
-        return (T) getCurrentSession().merge(entity);
+    	getCurrentSession().update(entity);
+        return entity;
     }
 
     public void delete(final T entity) {
