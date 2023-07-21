@@ -29,6 +29,7 @@ public class SecurityConfiguration {
 				.disable()
 				.authorizeHttpRequests()
 				.requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
+				.requestMatchers(HttpMethod.POST, "/api/v1/auth/sign").permitAll()
 				.requestMatchers(HttpMethod.GET, "/api/v1/auth").hasAnyAuthority("DATAENTRY","MANAGER","ADMIN")
 				.requestMatchers(HttpMethod.GET, "/api/v1/auth/**").hasAnyAuthority("DATAENTRY","MANAGER","ADMIN")
 				.requestMatchers(HttpMethod.GET, "/api/v1/submission").hasAnyAuthority("DATAENTRY","MANAGER","ADMIN")

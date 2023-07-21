@@ -1,5 +1,7 @@
 package fgh.org.mz.mozartportalbackend.rest.auth;
 
+import java.util.List;
+
 public class AuthenticationResponse {
 	
 	private String token;
@@ -7,6 +9,8 @@ public class AuthenticationResponse {
 	private String name;
 	
 	private String username;
+	
+	private List<String> role;
 	
 	public AuthenticationResponse() {}
 
@@ -36,6 +40,14 @@ public class AuthenticationResponse {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public List<String> getRole() {
+		return role;
+	}
+
+	public void setRole(List<String> role) {
+		this.role = role;
 	}
 
 }

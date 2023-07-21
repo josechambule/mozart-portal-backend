@@ -1,5 +1,7 @@
 package fgh.org.mz.mozartportalbackend.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fgh.org.mz.mozartportalbackend.dao.IUserDaoRepository;
+import fgh.org.mz.mozartportalbackend.model.Role;
 import fgh.org.mz.mozartportalbackend.model.User;
 import fgh.org.mz.mozartportalbackend.rest.auth.AuthenticationRequest;
 import fgh.org.mz.mozartportalbackend.rest.auth.AuthenticationResponse;
@@ -61,6 +64,14 @@ public class AuthenticationService implements IAuthenticationService {
 		authResponse.setToken(jwtToken);
 		authResponse.setName(user.get().getName());
 		authResponse.setUsername(user.get().getUsername());
+		
+		List<String> role = new ArrayList<String>();
+		
+		for (Role strRole :user.get().getRole()) {
+			role.add(strRole.getRole());
+		}
+		
+		authResponse.setRole(role);
 
 		return authResponse;
 	}
